@@ -5,9 +5,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
 /**
- * Mybatis Mapper interface with all additional SQL query
- * 
- * @author henrique
+ * Mybatis Mapper interface with additional SQL query.
  */
 @Mapper
 public interface ContactMapper {

@@ -5,9 +5,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Component;
 
 /**
- * Interface for CRUD operations on a repository for a Contact type
+ * Interface for CRUD operations on a repository for a Contact class type.
  * 
- * @author henrique
+ * This Interface just extends @org.springframework.data.repository.CrudRepository 
+ * for enable CRUD operation via JdbcTemplate.
  */
 @Component
 interface ContactRepositoryCrud extends CrudRepository<Contact, Integer> {

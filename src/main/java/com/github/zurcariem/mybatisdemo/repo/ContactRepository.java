@@ -4,17 +4,21 @@ import com.github.zurcariem.mybatisdemo.mapper.ContactMapper;
 import com.github.zurcariem.mybatisdemo.model.Contact;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * Repository that replicate CRUD operation implemented from ContactRepositoryCrud 
- then add additional methods (not permited in CrudRepository interface 
- wihtout @Query annotation)
+ * Repository implementation class that exposes CRUD operations from 
+ * ContactRepositoryCrud Interface and add methods not permited in 
+ * CrudRepository Interface wihtout @Query annotation.
  * 
- * @author henrique
+ * The additional methods can use either Mybatis or JdbcTemplate/CrudRepository 
+ * operations, no matters.
+ * 
+ * This is the exposed Repository Class for the application.
  */
 @Repository
-public class ContactRepository implements ContactRepositoryCrud {
+public class ContactRepository implements CrudRepository<Contact, Integer> {
 
     @Autowired
     private ContactRepositoryCrud contactCRUDRepo;

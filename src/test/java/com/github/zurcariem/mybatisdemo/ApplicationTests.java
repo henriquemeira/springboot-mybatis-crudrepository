@@ -16,11 +16,10 @@ class ApplicationTests {
     private static void log(String txt) {
         System.out.println("TEST LOG: " + txt);
     }
-
     
     /**
-     * Test get all contacts from database.
-     * This method use CrudRepository method, so, via JdbcTemplate
+     * Test getting all contacts from database.
+     * This use CrudRepository method, so, via JdbcTemplate
      */
     @Test
     public void testGetAll() {
@@ -35,7 +34,7 @@ class ApplicationTests {
     }
     
     /**
-     * Test select from database quering by fullname.
+     * Test a single select from database, querying by fullname.
      * This method use Mybatis operation. See log.
      */
     @Test
@@ -50,8 +49,9 @@ class ApplicationTests {
     
     
     /**
-     * This method update contact via CrudRepository (JdbcTemplate, see log).
-     * Getting data by mybatis.
+     * Test an UPDATE operation in database.
+     * Updates the contact via CrudRepository (JdbcTemplate, see log), 
+     * then get data via mybatis.
      */
     @Test
     public void testUpdateContact() {
@@ -65,16 +65,15 @@ class ApplicationTests {
         
         contactRepository.save(contact);
         
-        contact = contactRepository.getByFullname("Sarah Connor");
-        
-        Assertions.assertEquals(newPhone, contact.getPhone());
+        Assertions.assertEquals(newPhone, 
+                contactRepository.getByFullname("Sarah Connor").getPhone());
         
     }
     
     
     /**
-     * This method count how many contacts via CrudRepository (JdbcTemplate) and
-     * via Mybatis then compare it.
+     * This method count how many contacts there are via 
+     * CrudRepository (JdbcTemplate) then compare it getting data via Mybatis.
      */
     @Test
     public void testCount() {
@@ -89,8 +88,8 @@ class ApplicationTests {
     
     /**
      * This method insert a new contact via CrudRepository (JdbcTemplate).
-     * Then retrieves by fullname via mybatis agina, get the ID and 
-     * retrieves via CrudRepository, then compare it.
+     * Then retrieves ID via mybatis and compare it getting data via 
+     * CrudRepository.
      */
     @Test
     public void testInsertContact() {
@@ -116,7 +115,7 @@ class ApplicationTests {
     
     
     /**
-     * This method retrieves contact via mybatis and delete via CrudRepository.
+     * Test DELETE operation via CrudRepository getting data via Mybatis.
      */
     @Test
     public void testDeleteContact() {
